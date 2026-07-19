@@ -1,0 +1,23 @@
+{
+  "name": "SchemaForge",
+  "short_name": "SchemaForge",
+  "description": "AI-powered database migration and API route generator. Turn legacy schemas or ERD images into production-ready Mongoose models, Express routes, and validators.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b1326",
+  "theme_color": "#0b1326",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0b1326"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#g)" fill-opacity="0.4"/>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#131b2e"/>
+      <stop offset="1" stop-color="#0b1326"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="180" cy="180" rx="60" ry="22" fill="#c0c1ff"/>
+  <path d="M120 180v110c0 12 27 22 60 22s60-10 60-22V180" fill="#7bd0ff" fill-opacity="0.2" stroke="#c0c1ff" stroke-width="6"/>
+  <path d="M120 250c0 12 27 22 60 22s60-10 60-22" stroke="#c0c1ff" stroke-width="6" fill="none"/>
+  <text x="80" y="430" font-family="Segoe UI, Arial, sans-serif" font-size="84" font-weight="700" fill="#dae2fd">SchemaForge</text>
+  <text x="84" y="500" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="400" fill="#c0c1ff">AI-Powered Database Migration &amp; API Generator</text>
+  <text x="84" y="560" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" fill="#7bd0ff">Legacy schema → Mongoose · Express · Validators</text>
+</svg>
