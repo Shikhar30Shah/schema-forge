@@ -20,7 +20,7 @@ export function Seo({ title, description, image, noindex }: SeoProps) {
   const fullTitle = title ? `${title} · ${SITE_NAME}` : DEFAULT_TITLE;
   const desc = description || DEFAULT_DESCRIPTION;
   const url = `${SITE_URL}${router.asPath}`;
-  const ogImage = image || '/og-image.svg';
+  const ogImage = image || `${SITE_URL}/og-image.svg`;
 
   return (
     <Head>
