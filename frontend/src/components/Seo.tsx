@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 const SITE_NAME = 'SchemaForge';
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://schemaforge.app';
+const SITE_URL = 'https://schemaforg.vercel.app';
 const DEFAULT_TITLE = 'SchemaForge — AI Database Migration & API Route Generator';
 const DEFAULT_DESCRIPTION =
   'AI-powered database migration and API route generator. Turn legacy schemas or ERD images into production-ready Mongoose models, Express routes, and validators.';
@@ -47,10 +47,11 @@ export function Seo({ title, description, image, noindex }: SeoProps) {
       <meta name="twitter:image" content={ogImage} />
 
       {noindex ? (
-        <meta name="robots" content="noindex,nofollow" />
+        <meta key="robots-noindex" name="robots" content="noindex,nofollow" />
       ) : (
-        <meta name="robots" content="index,follow" />
+        <meta key="robots-index" name="robots" content="index,follow" />
       )}
+
     </Head>
   );
 }
