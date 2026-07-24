@@ -26,8 +26,6 @@ app.get('/schema/health', (req, res) => {
   res.json({ status: 'ok', service: 'SchemaForge AI Generator' });
 });
 
-app.use('/schema', console.log('Applying rate limiting middleware with options:', config.rateLimitOptions) || rateLimit(config.rateLimitOptions));
-
 app.use(
   '/schema',
   rateLimit(config.rateLimitOptions)

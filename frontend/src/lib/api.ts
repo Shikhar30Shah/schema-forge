@@ -28,7 +28,7 @@ export type HistoryEntry = {
   createdAt: string;
 };
 
-const API_BASE_URL = 'https://schemaforgee.vercel.app:4000';
+const API_BASE_URL = 'https://schemaforgee.vercel.app';
 
 function getStoredToken() {
   if (typeof window === 'undefined') {
