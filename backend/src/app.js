@@ -14,6 +14,7 @@ const app = express();
 
 app.use(helmet());
 app.use(cors(config.corsOptions));
+app.options('*', cors(config.corsOptions));
 app.use(compression());
 app.use(express.json({ limit: config.requestSizeLimit }));
 app.use(express.urlencoded({ extended: true }));

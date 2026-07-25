@@ -10,7 +10,7 @@ function parsePort(value, fallback = 4000) {
   return fallback;
 }
 
-const corsOrigins = process.env.CORS_ORIGINS ? process.env.CORS_ORIGINS.split(',').map((value) => value.trim()) : ['*'];
+const corsOrigins = process.env.CORS_ORIGINS ? process.env.CORS_ORIGINS.split(',').map((value) => value.trim()) : true;
 
 module.exports = {
   port: parsePort(process.env.PORT, 4000),
