@@ -21,7 +21,7 @@ async function generate(req, res, next) {
   try {
     const { source } = req.body;
     const result = await generateFromSource(source);
-
+console.log('Generated result:', result);
     const authUser = await getAuthenticatedUser(req);
     if (authUser) {
       await saveHistoryEntry(authUser.id, {
@@ -31,6 +31,7 @@ async function generate(req, res, next) {
         validators: result.validators,
         summary: result.summary,
         sourceType: result.sourceType,
+        services: result.services || '',
       });
     }
 
@@ -49,12 +50,13 @@ async function generateFromImageHandler(req, res, next) {
     const authUser = await getAuthenticatedUser(req);
     if (authUser) {
       await saveHistoryEntry(authUser.id, {
-        source: result.summary || 'Generated from uploaded image',
+        source: result.source || result.summary || 'Generated from uploaded image',
         models: result.models,
         routes: result.routes,
         validators: result.validators,
         summary: result.summary,
         sourceType: result.sourceType,
+        services: result.services || '',
       });
     }
 

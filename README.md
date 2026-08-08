@@ -4,7 +4,7 @@ AI-Powered Database Migration & API Route Generator
 
 ## Overview
 
-SchemaForge is a developer utility app that converts legacy database schema or raw JSON objects into production-ready Express.js routes, Mongoose models, and validator code. It uses a Redux-powered frontend and a Node/Express backend with optional AI generation.
+SchemaForge is a developer utility app that converts legacy database schema or raw JSON objects into production-ready Express.js routes, Mongoose models, and validator code. It uses a Redux-powered frontend and a Node/Express backend with AI generation.
 
 ## Folder structure
 

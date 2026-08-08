@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { Provider } from 'react-redux';
 import { Raleway } from 'next/font/google';
 import { store } from '../store/store';
+import { Toast } from '../components/ui/toast';
 import '../styles/globals.css';
 
 const raleway = Raleway({
@@ -24,6 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <main className={raleway.className}>
         <Component {...pageProps} />
+        <Toast />
       </main>
     </Provider>
   );

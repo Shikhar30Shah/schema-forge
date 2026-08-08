@@ -7,17 +7,19 @@ type OutputPaneProps = {
   routes: string;
   validators: string;
   summary: string;
+  services: string;
   status: string;
   error: string | null;
   onCopy: (content: string) => void;
 };
 
-export function OutputPane({ models, routes, validators, summary, status, error, onCopy }: OutputPaneProps) {
+export function OutputPane({ models, routes, validators, summary, services, status, error, onCopy }: OutputPaneProps) {
   const [selectedTab, setSelectedTab] = React.useState('models');
   const tabs = [
     { id: 'models', title: 'Models', content: models },
     { id: 'routes', title: 'Routes', content: routes },
     { id: 'validators', title: 'Validators', content: validators },
+    { id: 'services', title: 'Services', content: services }, // Placeholder for services tab
   ];
 
   return (

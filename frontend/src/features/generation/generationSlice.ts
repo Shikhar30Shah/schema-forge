@@ -51,6 +51,7 @@ export type GenerationState = {
   models: string;
   routes: string;
   validators: string;
+  services: string;
   status: GenerationStatus;
   inputError: string | null;
   pendingEntry: HistoryEntry | null;
@@ -61,6 +62,7 @@ const initialState: GenerationState = {
   models: DEFAULT_MODELS,
   routes: DEFAULT_ROUTES,
   validators: DEFAULT_VALIDATORS,
+  services: '',
   status: 'ready',
   inputError: null,
   pendingEntry: null,
@@ -114,6 +116,7 @@ const generationSlice = createSlice({
       state.models = action.payload.models || '';
       state.routes = action.payload.routes || '';
       state.validators = action.payload.validators || '';
+      state.services = action.payload.services || '';
       state.status = 'ready';
       state.inputError = null;
     },
@@ -121,6 +124,7 @@ const generationSlice = createSlice({
       state.models = '';
       state.routes = '';
       state.validators = '';
+      state.services = '';
       state.status = 'ready';
     },
   },
@@ -133,6 +137,7 @@ const generationSlice = createSlice({
         state.models = action.payload.models;
         state.routes = action.payload.routes;
         state.validators = action.payload.validators;
+        state.services = action.payload.services;
         state.status = 'ready';
       })
       .addCase(generateCode.rejected, (state) => {
@@ -145,6 +150,9 @@ const generationSlice = createSlice({
         state.models = action.payload.models;
         state.routes = action.payload.routes;
         state.validators = action.payload.validators;
+        if (action.payload.source) {
+          state.source = action.payload.source;
+        }
         state.status = 'ready';
         state.pendingEntry = null;
       })

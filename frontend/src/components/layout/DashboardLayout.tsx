@@ -21,7 +21,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   // Centralize auth bootstrap so every protected page has a valid session/token.
   useEffect(() => {
     void dispatch(bootstrapAuth());
-  }, [dispatch]);
+  }, []);
 
   // Close the mobile drawer with Escape.
   useEffect(() => {

@@ -2,8 +2,10 @@ export type GenerateResponse = {
   models: string;
   routes: string;
   validators: string;
+  services: string;
   summary: string;
   sourceType: string;
+  source?: string | null;
 };
 
 export type AuthUser = {
@@ -23,6 +25,7 @@ export type HistoryEntry = {
   models: string;
   routes: string;
   validators: string;
+  services: string;
   summary: string;
   sourceType: string;
   createdAt: string;

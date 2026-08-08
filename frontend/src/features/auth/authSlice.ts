@@ -1,5 +1,20 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getCurrentUser, signIn, signOut, signUp, type AuthResponse, type AuthUser } from '../../lib/api';
+import { signIn, signOut, signUp, type AuthResponse, type AuthUser } from '../../lib/api';
+
+function getStoredAuth() {
+  try {
+    const token = window.localStorage.getItem('schemaforge_token');
+    const rawUser = window.localStorage.getItem('schemaforge_user');
+    if (!token || !rawUser) return null;
+    const user = JSON.parse(rawUser) as AuthUser;
+    if (!user || !user.id || !user.email) return null;
+    return { user, token };
+  } catch {
+    window.localStorage.removeItem('schemaforge_token');
+    window.localStorage.removeItem('schemaforge_user');
+    return null;
+  }
+}
 
 export type AuthState = {
   user: AuthUser | null;
@@ -21,13 +36,8 @@ export const bootstrapAuth = createAsyncThunk<AuthResponse | null, void, { rejec
   'auth/bootstrapAuth',
   async (_, thunkAPI) => {
     try {
-      const storedToken = window.localStorage.getItem('schemaforge_token');
-      if (!storedToken) {
-        return null;
-      }
-
-      const user = await getCurrentUser(storedToken);
-      return { user: user.user, token: storedToken };
+      const stored = getStoredAuth();
+      return stored || null;
     } catch (error) {
       window.localStorage.removeItem('schemaforge_token');
       window.localStorage.removeItem('schemaforge_user');

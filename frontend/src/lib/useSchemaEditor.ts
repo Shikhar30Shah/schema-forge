@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
-import { getCurrentUser, type HistoryEntry } from '@/lib/api';
-import { bootstrapAuth, logoutUser } from '../features/auth/authSlice';
+import { logoutUser } from '../features/auth/authSlice';
 import {
   generateCode,
   generateFromImage as generateFromImageThunk,
@@ -20,7 +19,7 @@ export function useSchemaEditor() {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
   const { user, token, isAuthenticated } = useSelector((state: RootState) => state.auth);
-  const { source, models, routes, validators, status, inputError, pendingEntry } = useSelector(
+  const { source, models, routes, validators, services, status, inputError, pendingEntry } = useSelector(
     (state: RootState) => state.generation,
   );
 
@@ -32,20 +31,11 @@ export function useSchemaEditor() {
     { id: 'models', label: 'Models', content: models },
     { id: 'routes', label: 'Routes', content: routes },
     { id: 'validators', label: 'Validators', content: validators },
+    { id: 'services', label: 'Services', content: services }, // Placeholder for services tab
   ];
 
   const currentTabContent = tabs.find((tab) => tab.id === selectedTab)?.content || '';
   const isReadyForGenerate = useMemo(() => source.trim().length > 0, [source]);
-
-  useEffect(() => {
-    void dispatch(bootstrapAuth());
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (token) {
-      void refreshUser(token);
-    }
-  }, [token]);
 
   // Apply a history entry staged from the /history page.
   useEffect(() => {
@@ -66,17 +56,6 @@ export function useSchemaEditor() {
       }
     });
   };
-
-  async function refreshUser(nextToken: string) {
-    try {
-      const result = await getCurrentUser(nextToken);
-      window.localStorage.setItem('schemaforge_user', JSON.stringify(result.user));
-    } catch {
-      void dispatch(logoutUser(null));
-      window.localStorage.removeItem('schemaforge_token');
-      window.localStorage.removeItem('schemaforge_user');
-    }
-  }
 
   const handleCopy = async () => {
     try {
